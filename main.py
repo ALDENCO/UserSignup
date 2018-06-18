@@ -30,11 +30,11 @@ def login():
         session['username'] = username
         
         if (len(username) <4) or (len(username)>20):
-            username_error = "Username must be between 3 and 20 characters fool!"
+            username_error = "Username must be between 4 and 20 characters fool!"
             username = ''
 
         if (len(password) <4) or (len(password) >20):
-            password_error = "Keep your password to between 3 and 20 characters idiot!"
+            password_error = "Keep your password to between 4 and 20 characters idiot!"
         elif password != verify_password:
             verify_password_error = "You entered two different passwords fool!"
         if (email != '') and (not re.match('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$', email)):
