@@ -9,12 +9,12 @@ app.config['DEBUG'] = True
 app.config['SESSION_TYPE'] = 'memcached'
 app.config['SECRET_KEY'] = 'secret key'
 
-template_dir = os.path.join(os.path.dirname(__file__), "templates")  # creates path to templates file via splicing the current directory path (links to templates directory)
+template_dir = os.path.join(os.path.dirname(__file__), "templates")  
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape=True)
 
 @app.route("/", methods = ['GET', 'POST'])
 def login():
-    title = 'Signup bruh!'
+    title = 'Signup!'
     username = ''
     email = ''
     username_error = ''
@@ -23,7 +23,7 @@ def login():
     email_error = ''
 
     if request.method == 'POST':
-        username = request.form['usernmame']
+        username = request.form['username']
         password = request.form['password']
         verify_password = request.form['verify_password']
         email = request.form['email']
@@ -36,9 +36,9 @@ def login():
         if (len(password) <4) or (len(password) >20):
             password_error = "Keep your password to between 3 and 20 characters idiot!"
         elif password != verify_password:
-            verify_password_error = "You entered two different passwords IDIOT!"
+            verify_password_error = "You entered two different passwords fool!"
         if (email != '') and (not re.match('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$', email)):
-            email_error = "You entered a fucked up email dickhead!"
+            email_error = "You entered a messed up email!"
             email = ''
 
         if (not username_error) and (not password_error) and (not verify_password_error) and (not email_error):
